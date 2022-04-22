@@ -1,38 +1,50 @@
 /* IMPORTANT */
 body {
-    background-color: #181818;
-    margin: 0;
+  background-color: #181818;
+  width: 100vw;
+  height: 100vh;
 
-    font-family: 'League Spartan', sans-serif;
-    font-size: 10ex;
-    color: white;
+  margin: 0;
 
-    scroll-behavior: smooth;
+  font-family: 'League Spartan', sans-serif;
+  font-size: 10ex;
+  color: white;
+
+  overflow: hidden;
   }
 
-  body::-webkit-scrollbar{
-    display: none;
-  }
-
-  body{
+  .container{
     -ms-overflow-style: none;
     scrollbar-width: none;
+
+    overflow: scroll;
+
+    width: 100%;
+    height: 100%;
+
+    scroll-snap-points-y: repeat(100vh);
+    scroll-snap-type: y mandatory;
   }
 
-  .imp{
+  .container::-webkit-scrollbar { 
+    display: none;
+}
+
+  section{
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    scroll-snap-align: center;
+    position: relative;
+  }
+
+  .imp{ 
     text-align: center; 
-  }
-
-  .welcome, .about{
-    padding: 40vh 0 50vh 0;
-  }
-
-  .about{
-    padding: 0 0 60vh 0;
-  }
-
-  button{
-    top: -11vh;
   }
 
   h2{
@@ -41,6 +53,7 @@ body {
   }
 
   button{
+    top: -9vh;
     box-shadow: 5px 5px 5px black;
   }
 
@@ -72,7 +85,7 @@ body {
 
 
 
-  /* MORE CSS */
+  /* ANIMATIONS */
 
   .bg {
     position: fixed;
@@ -112,7 +125,7 @@ body {
   cursor: pointer;
   display: inline-block;
   font-family: "Farfetch Basis","Helvetica Neue",Arial,sans-serif;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 700;
   line-height: 1.5;
   margin: 0;
