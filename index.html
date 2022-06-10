@@ -1,44 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <link rel="icon" href="icon.png" />
-    <link href="http://fonts.cdnfonts.com/css/league-spartan" rel="stylesheet">
-    <title>7Sky.js</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
+    <title>7sky.js</title>
     <script>
-        function goNext() {
+
+       function arrow(){
             second = document.getElementById('second');
-            second.scrollIntoView({behavior: "smooth"});
-        }
+            second.scrollIntoView({behavior: "smooth", block: "start"});
+
+            document.getElementById('arrow').classList.add('blink2');
+            document.getElementById('arrow2').classList.remove('blink2')
+            document.getElementById('arrow2').classList.add('blink');
+       };
+
+       function start(){
+            first = document.getElementById('container');
+            first.scrollIntoView({behavior: "smooth", block: "start"});
+
+            document.getElementById('arrow2').classList.add('blink2');
+            document.getElementById('arrow').classList.remove('blink2')
+            document.getElementById('arrow').classList.add('blink');
+       };
+
+       
     </script>
 </head>
-<body>
 
-    <!--MAIN-->
-
+<body onload="start()">
     <div class="bg"></div>
 
-    <div class="container">
+    <aside>
+        <br><br><br>
+        <p id="arrow2" class="arrow up" onclick="start()"></p>
+        <div id="socials">
+            <p><a href="https://github.com/7Skyjs" target="_blank"><img src="github.png" alt="github-icon" width="30%" class="links"></a></p>
+            <p><a href="https://www.instagram.com/5ky.js/" target="_blank"><img src="instagram.png" alt="instagram-icon" width="30%" class="links"></a></p>
+            <p><a href="https://twitter.com/7skyjs" target="_blank"><img src="twitter.png" alt="twitter-icon" width="30%" class="links"></a></p>
+            <p><a href="mailto:7sky.js@gmail.com?subject=Business&body=Hello Peter.%0D%0AI'm writing to you to talk about: " target="_blank"><img src="email.png" alt="email-icon" width="30%" class="links"></a></p>
+        </div>
+    </aside>
     
-        <section class="imp">
-            <h2>7Sky.js</h2>
-            <br />
-            <button class="button-31" role="button" onclick="goNext()"> Enjoy</button>
-        </section>
+<div id="container">
 
+    <main>
+        <h1 style="font-size:50%;">Hi, my name is</h1>
+        <h2  style="font-size:140%"><span style="color: orange;">Piotr</span> Kapeluszny.</h2>
+        <h3  style="font-size:150%">i make things for the web.&nbsp;</h3>
+    </main>
 
-    <!--ABOUT-->
+    <nav style="padding-top: 20%;">
+        <p id="arrow" class="arrow down" onclick="arrow()"></p>
+    </nav>
+</div>
+   <article id="second">
+    <h1 style="font-size: 700%;color: orange;">My projects</h1>
+   </article>
 
-        <section class="imp" id="second">
-            <h2>About me</h2>
-        <br />
-            <h6>
-                My name is Piotr. I am a second grade student in a technical secondary school. I'm from Poland and I'm 17 years old. You can see some of my projects below.
-            </h6>
-        </section>
-
-    </div>
 </body>
+
 </html>
