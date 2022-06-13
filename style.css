@@ -71,7 +71,8 @@ article{
 #clock{
   position: relative;
   top: 20%;
-  background-color: #2F4858;
+  background-color: rgba(255, 236, 204,0.8);
+  border: 5px solid black;
   width: 70vw;
   height: 60vh;
   margin-left: 10%;
@@ -100,6 +101,7 @@ article{
   justify-content: center;
   align-items: center;
   color: black;
+  background-color: rgba(255, 165, 0, 0.6);
 
   border-radius: 20px;
 
@@ -117,6 +119,7 @@ button{
   aspect-ratio: 4/1;
   font-size: 100%;
   font-weight: bold;
+  border-radius: 10px;
 }
 
 button:hover{

@@ -15,6 +15,8 @@
     <title>7sky.js</title>
     <script>
 
+        var stop;
+
         function start(){
             document.getElementById('container').scrollIntoView({behavior: "smooth", block: "start"});
 
@@ -40,6 +42,10 @@
             m = checkTime(m);
             s = checkTime(s);
 
+            if(stop==1){
+                return 0;
+            }
+
             document.getElementById('clock-result').innerHTML =  h + ":" + m + ":" + s;
             setTimeout(clock, 100);
        }
@@ -55,6 +61,15 @@
             navigator.clipboard.writeText(copy).then(() => {
                 alert("Copied to clipboard");
             });
+        }
+
+        function stop_timer(){
+            if (stop==1){
+                stop=0;
+                clock();
+            }else{
+                stop=1;
+            };
         }
 
 
@@ -102,11 +117,15 @@
    <div id="time">
 
         <div id="clock">
+            
             <div id="draw">
                 <div id="clock-result"></div>
             </div>
             <div id="copy">
                 <button onclick="copy_to_clipboard()">Copy time to clipboard</button>
+            </div>
+            <div id="stop">
+                <button onclick="stop_timer()">START / STOP the timer</button>
             </div>
             
         </div>
