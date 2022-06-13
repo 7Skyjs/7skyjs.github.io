@@ -10,27 +10,53 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="icon" href="icon.png">
 
     <title>7sky.js</title>
     <script>
 
-       function arrow(){
-            second = document.getElementById('second');
-            second.scrollIntoView({behavior: "smooth", block: "start"});
+        function start(){
+            document.getElementById('container').scrollIntoView({behavior: "smooth", block: "start"});
 
-            document.getElementById('arrow').classList.add('blink2');
-            document.getElementById('arrow2').classList.remove('blink2')
-            document.getElementById('arrow2').classList.add('blink');
-       };
+            clock();
+        }
 
-       function start(){
-            first = document.getElementById('container');
-            first.scrollIntoView({behavior: "smooth", block: "start"});
+       function scrollto(x){
+            document.getElementById(x).scrollIntoView({behavior: "smooth", block: "start"});
 
-            document.getElementById('arrow2').classList.add('blink2');
-            document.getElementById('arrow').classList.remove('blink2')
-            document.getElementById('arrow').classList.add('blink');
-       };
+            if(x != 'container'){
+                document.getElementById('arrow2').style.opacity=1;
+            }else{
+                document.getElementById('arrow2').style.opacity=0;
+            };
+
+       }
+
+       function clock(){
+            const today = new Date();
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+            m = checkTime(m);
+            s = checkTime(s);
+
+            document.getElementById('clock-result').innerHTML =  h + ":" + m + ":" + s;
+            setTimeout(clock, 100);
+       }
+
+       function checkTime(i) {
+            if (i < 10) {i = "0" + i};
+            return i;
+        }
+
+        function copy_to_clipboard(){
+            var copy = document.getElementById("clock-result").innerHTML;
+
+            navigator.clipboard.writeText(copy).then(() => {
+                alert("Copied to clipboard");
+            });
+        }
+
 
        
     </script>
@@ -41,7 +67,9 @@
 
     <aside>
         <br><br><br>
-        <p id="arrow2" class="arrow up" onclick="start()"></p>
+
+        <p id="arrow2" class="arrow up" onclick="scrollto('container')"></p>
+
         <div id="socials">
             <p><a href="https://github.com/7Skyjs" target="_blank"><img src="github.png" alt="github-icon" width="30%" class="links"></a></p>
             <p><a href="https://www.instagram.com/5ky.js/" target="_blank"><img src="instagram.png" alt="instagram-icon" width="30%" class="links"></a></p>
@@ -55,17 +83,35 @@
     <main>
         <h1 style="font-size:50%;">Hi, my name is</h1>
         <h2  style="font-size:140%"><span style="color: orange;">Piotr</span> Kapeluszny.</h2>
-        <h3  style="font-size:150%">i make things for the web.&nbsp;</h3>
+        <h3  style="font-size:150%">i make things for the web. <span class="writing-animation">&nbsp;</span></h3>
     </main>
 
-    <nav style="padding-top: 20%;">
-        <p id="arrow" class="arrow down" onclick="arrow()"></p>
+    <nav>
+
+        <p id="arrow" class="arrow down" onclick="scrollto('second')"></p>
+
     </nav>
 </div>
    <article id="second">
-    <p style="font-size: 700%;color: orange;font-weight: bold;">My projects</p>
+    <p style="font-size: 700%;color: orange;font-weight: bold;margin-bottom: 10%;">Examples of my work</p>
+
+    <p onclick="scrollto('time')" class="project"><img src="clock.png" alt="clock"  height="300vh"></p>
+    
    </article>
 
-</body>
+   <div id="time">
 
+        <div id="clock">
+            <div id="draw">
+                <div id="clock-result"></div>
+            </div>
+            <div id="copy">
+                <button onclick="copy_to_clipboard()">Copy time to clipboard</button>
+            </div>
+            
+        </div>
+        
+   </div>
+
+</body>
 </html>
